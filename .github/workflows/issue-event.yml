@@ -1,0 +1,26 @@
+name: Issue Event Demo
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  issue-job:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Print Issue Details
+        run: |
+          echo "Issue Title: ${{ github.event.issue.title }}"
+          echo "Issue Body: ${{ github.event.issue.body }}"
+          echo "Created By: ${{ github.event.issue.user.login }}"
+
+      - name: Welcome Message
+        run: |
+          echo "Thanks for creating issue"
+
+      - name: Show Repository Info
+        run: |
+          echo "Repository Name: ${{ github.repository }}"
